@@ -9,6 +9,6 @@ export class ArticleService {
   constructor(private http: HttpClient) {}
 
   getArticles() {
-    return this.http.get<Article[]>('/assets/articles.json');
+    return this.http.get<Article[]>('articles');
   }
 }

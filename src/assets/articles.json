@@ -1,20 +1,22 @@
-[
-  {
-    "id": "1",
-    "title": "this is a title",
-    "body": "body here!",
-    "createdAt": "2019-12-02T14:28:07.000Z"
-  },
-  {
-    "id": "2",
-    "title": "this is a title",
-    "body": "body here!",
-    "createdAt": "2019-12-02T14:28:07.000Z"
-  },
-  {
-    "id": "3",
-    "title": "this is a title",
-    "body": "body here!",
-    "createdAt": "2019-12-02T14:28:07.000Z"
-  }
-]
+{
+  "articles": [
+    {
+      "id": "1",
+      "title": "this is a title",
+      "body": "body here!",
+      "createdAt": "2019-12-02T14:28:07.000Z"
+    },
+    {
+      "id": "2",
+      "title": "this is a title",
+      "body": "body here!",
+      "createdAt": "2019-12-02T14:28:07.000Z"
+    },
+    {
+      "id": "3",
+      "title": "this is a title",
+      "body": "body here!",
+      "createdAt": "2019-12-02T14:28:07.000Z"
+    }
+  ]
+}
