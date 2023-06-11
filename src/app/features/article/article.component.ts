@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Article } from 'src/app/core/models/article.model';
 import { ArticleService } from 'src/app/core/services/article.service';
@@ -11,10 +11,12 @@ import { ArticleService } from 'src/app/core/services/article.service';
 })
 export class ArticleComponent implements OnInit {
   article!: Article;
+  isDeleting = false;
 
   constructor(
     private route: ActivatedRoute,
-    private articleService: ArticleService
+    private articleService: ArticleService,
+    private readonly router: Router
   ) {}
 
   ngOnInit() {
@@ -31,5 +33,13 @@ export class ArticleComponent implements OnInit {
         },
       });
     }
+  }
+
+  deleteArticle() {
+    this.isDeleting = true;
+
+    this.articleService.delete(this.article.id).subscribe(() => {
+      this.router.navigate(['/']);
+    });
   }
 }
