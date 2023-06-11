@@ -1,1 +1,5 @@
-<p>article-list works!</p>
+<div *ngFor="let article of articles | async">
+  <h2>{{ article.title }}</h2>
+  <p>{{ article.body }}</p>
+  <p>{{ article.createdAt | date }}</p>
+</div>
