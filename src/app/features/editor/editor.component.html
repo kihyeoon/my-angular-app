@@ -1,1 +1,22 @@
-<p>editor works!</p>
+<h2>editor</h2>
+
+<form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+  <fieldset [disabled]="isSubmitting">
+    <div>
+      <label for="title"> 제목 </label>
+      <input
+        id="title"
+        type="text"
+        formControlName="title"
+        placeholder="제목을 입력하세요"
+        required
+      />
+    </div>
+
+    <div>
+      <label for="body"> 내용 </label>
+      <input id="body" type="text" formControlName="body" required />
+    </div>
+    <button class="button" type="submit">작성 완료</button>
+  </fieldset>
+</form>

@@ -1,10 +1,6 @@
+import { ArticleService } from 'src/app/core/services/article.service';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, UntypedFormGroup } from '@angular/forms';
-
-interface ArticleForm {
-  title: FormControl<string>;
-  body: FormControl<string>;
-}
+import { FormBuilder, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-editor',
@@ -12,8 +8,34 @@ interface ArticleForm {
   styleUrls: ['./editor.component.css'],
 })
 export class EditorComponent {
-  articleForm: UntypedFormGroup = new FormGroup<ArticleForm>({
-    title: new FormControl('', { nonNullable: true }),
-    body: new FormControl('', { nonNullable: true }),
+  isSubmitting = false;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private articleService: ArticleService
+  ) {}
+
+  articleForm: UntypedFormGroup = this.formBuilder.group({
+    title: '',
+    body: '',
   });
+
+  onSubmit(): void {
+    this.isSubmitting = true;
+
+    const formValue = this.articleForm.value;
+    formValue.createdAt = new Date().toISOString();
+
+    this.articleService.create(formValue).subscribe({
+      next: (article) => {
+        console.log(article);
+        this.isSubmitting = false;
+        this.articleForm.reset();
+      },
+      error: (err) => {
+        console.error(err);
+        this.isSubmitting = false;
+      },
+    });
+  }
 }
