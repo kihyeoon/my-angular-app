@@ -9,12 +9,15 @@ import { HomeComponent } from 'src/app/features/home/home.component';
 import { ArticleListComponent } from 'src/app/shared/article-list/article-list.component';
 import { EditorComponent } from 'src/app/features/editor/editor.component';
 import { ApiInterceptor } from 'src/app/core/interceptors/api.interceptor';
+import { HeaderComponent } from 'src/app/shared/layout/header.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ArticleListComponent,
     EditorComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
