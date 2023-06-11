@@ -10,6 +10,7 @@ import { ArticleListComponent } from 'src/app/shared/article-list/article-list.c
 import { EditorComponent } from 'src/app/features/editor/editor.component';
 import { ApiInterceptor } from 'src/app/core/interceptors/api.interceptor';
 import { HeaderComponent } from 'src/app/shared/layout/header.component';
+import { ArticleComponent } from 'src/app/features/article/article.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { HeaderComponent } from 'src/app/shared/layout/header.component';
     ArticleListComponent,
     EditorComponent,
     HeaderComponent,
+    ArticleComponent,
   ],
   imports: [
     BrowserModule,

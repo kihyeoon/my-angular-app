@@ -14,9 +14,7 @@ export class ArticleService {
   }
 
   get(id: string): Observable<Article> {
-    return this.http
-      .get<{ article: Article }>(`/articles/${id}`)
-      .pipe(map((data) => data.article));
+    return this.http.get<Article>(`/articles/${id}`);
   }
 
   delete(id: string): Observable<void> {
@@ -24,21 +22,10 @@ export class ArticleService {
   }
 
   create(article: Partial<Article>): Observable<Article> {
-    return this.http
-      .post<{ article: Article }>('/articles', article)
-      .pipe(map((data) => data.article));
+    return this.http.post<Article>('/articles', article);
   }
 
   update(article: Partial<Article>): Observable<Article> {
-    return this.http
-      .put<{ article: Article }>(`/articles/${article.id}`, article)
-      .pipe(map((data) => data.article));
-  }
-
-  // 현재 시간을 리턴하는 함수
-  getCurrentTime(): Observable<number> {
-    return this.http
-      .get<{ time: number }>('/time')
-      .pipe(map((data) => data.time));
+    return this.http.put<Article>(`/articles/${article.id}`, article);
   }
 }
