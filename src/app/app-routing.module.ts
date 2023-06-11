@@ -6,7 +6,13 @@ import { HomeComponent } from 'src/app/features/home/home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'edit', component: EditorComponent },
+  {
+    path: 'edit',
+    children: [
+      { path: '', component: EditorComponent },
+      { path: ':id', component: EditorComponent },
+    ],
+  },
   { path: 'article/:id', component: ArticleComponent },
 ];
 

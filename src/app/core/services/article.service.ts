@@ -25,7 +25,7 @@ export class ArticleService {
     return this.http.post<Article>('/articles', article);
   }
 
-  update(article: Partial<Article>): Observable<Article> {
-    return this.http.put<Article>(`/articles/${article.id}`, article);
+  update(id: string, article: Partial<Article>): Observable<Article> {
+    return this.http.put<Article>(`/articles/${id}`, article);
   }
 }
