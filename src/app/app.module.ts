@@ -12,6 +12,7 @@ import { ApiInterceptor } from 'src/app/core/interceptors/api.interceptor';
 import { HeaderComponent } from 'src/app/shared/layout/header.component';
 import { ArticleComponent } from 'src/app/features/article/article.component';
 import { ShowAuthedDirective } from 'src/app/show-authed.directive';
+import { AuthComponent } from 'src/app/features/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ShowAuthedDirective } from 'src/app/show-authed.directive';
     HeaderComponent,
     ArticleComponent,
     ShowAuthedDirective,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,

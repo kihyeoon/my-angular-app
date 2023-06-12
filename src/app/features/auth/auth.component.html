@@ -1,0 +1,26 @@
+<h2>{{ title }}</h2>
+
+<p>
+  <a *ngIf="authType === 'register'" [routerLink]="['/login']"
+    >이미 계정이 있으신가요?</a
+  >
+  <a *ngIf="authType === 'login'" [routerLink]="['/register']"
+    >아직 회원이 아니신가요?</a
+  >
+</p>
+
+<form [formGroup]="authForm" (ngSubmit)="submitForm()">
+  <fieldset [disabled]="isSubmitting">
+    <input
+      *ngIf="authType === 'register'"
+      formControlName="username"
+      placeholder="Username"
+      type="text"
+      required
+    />
+    <input formControlName="email" placeholder="Email" type="email" />
+    <button [disabled]="!authForm.valid" type="submit">
+      {{ title }}
+    </button>
+  </fieldset>
+</form>
