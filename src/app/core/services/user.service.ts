@@ -30,10 +30,13 @@ export class UserService {
     this.currentUserSubject.next(null);
   }
 
-  login(credentials: { email: string }): Observable<{ user: User }> {
-    return this.http
-      .post<{ user: User }>('/users', { user: credentials })
-      .pipe(tap(({ user }) => this.setAuth(user)));
+  login(email: string): Observable<User> {
+    console.log('login');
+    return this.http.get<User[]>(`/users?email=${email}`).pipe(
+      map((users) => users[0]),
+      tap((user) => console.log('user', user)),
+      tap((user) => this.setAuth(user))
+    );
   }
 
   register(credentials: {
