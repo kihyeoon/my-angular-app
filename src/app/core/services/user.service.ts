@@ -4,7 +4,7 @@ import { map, distinctUntilChanged, tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { User } from 'src/app/core/models/user.model';
-import { tokenService } from 'src/app/core/services/token.service';
+import { TokenService } from 'src/app/core/services/token.service';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -16,7 +16,7 @@ export class UserService {
 
   constructor(
     private readonly http: HttpClient,
-    private readonly tokenService: tokenService,
+    private readonly tokenService: TokenService,
     private readonly router: Router
   ) {}
 
@@ -48,11 +48,11 @@ export class UserService {
     void this.router.navigate(['/']);
   }
 
-  getCurrentUser(): Observable<{ user: User }> {
+  getCurrentUser(): Observable<User> {
     const token = this.tokenService.getToken();
-    return this.http.get<{ user: User }>(`/users/${token}`).pipe(
+    return this.http.get<User>(`/users/${token}`).pipe(
       tap({
-        next: ({ user }) => this.setAuth(user),
+        next: (user) => this.setAuth(user),
         error: () => this.purgeAuth(),
       })
     );
