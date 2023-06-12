@@ -11,6 +11,7 @@ import { EditorComponent } from 'src/app/features/editor/editor.component';
 import { ApiInterceptor } from 'src/app/core/interceptors/api.interceptor';
 import { HeaderComponent } from 'src/app/shared/layout/header.component';
 import { ArticleComponent } from 'src/app/features/article/article.component';
+import { ShowAuthedDirective } from 'src/app/show-authed.directive';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ArticleComponent } from 'src/app/features/article/article.component';
     EditorComponent,
     HeaderComponent,
     ArticleComponent,
+    ShowAuthedDirective,
   ],
   imports: [
     BrowserModule,
