@@ -26,7 +26,7 @@ export class AuthComponent implements OnInit {
   errors: Errors = { errors: {} };
   isSubmitting = false;
   authForm: UntypedFormGroup = this.FormBuilder.group({
-    email: ['', [Validators.required], { nonNullable: true }],
+    email: ['', [Validators.required]],
   });
 
   ngOnInit(): void {

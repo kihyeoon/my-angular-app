@@ -16,6 +16,7 @@ import { AuthComponent } from 'src/app/features/auth/auth.component';
 import { TokenService } from 'src/app/core/services/token.service';
 import { UserService } from 'src/app/core/services/user.service';
 import { EMPTY } from 'rxjs';
+import { ProfileComponent } from 'src/app/features/profile/profile.component';
 
 export function initAuth(tokenService: TokenService, userService: UserService) {
   return () => (tokenService.getToken() ? userService.getCurrentUser() : EMPTY);
@@ -31,6 +32,7 @@ export function initAuth(tokenService: TokenService, userService: UserService) {
     ArticleComponent,
     ShowAuthedDirective,
     AuthComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
