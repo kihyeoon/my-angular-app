@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Article } from 'src/app/core/models/article.model';
+import { UserService } from 'src/app/core/services/user.service';
+import { User } from 'src/app/core/models/user.model';
 
 @Component({
   selector: 'app-editor',
@@ -17,12 +19,14 @@ export class EditorComponent implements OnInit {
     title: '',
     body: '',
   });
+  writer!: Omit<User, 'email'>;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private articleService: ArticleService,
-    private route: ActivatedRoute,
-    private router: Router
+    private readonly formBuilder: FormBuilder,
+    private readonly articleService: ArticleService,
+    private readonly route: ActivatedRoute,
+    private readonly router: Router,
+    private readonly userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -39,6 +43,10 @@ export class EditorComponent implements OnInit {
 
       this.isModifing = true;
     }
+
+    this.userService.currentUser.subscribe((user) => {
+      if (user) this.writer = { id: user.id, username: user.username };
+    });
   }
 
   onSubmit(): void {
@@ -60,16 +68,18 @@ export class EditorComponent implements OnInit {
             this.isSubmitting = false;
           },
         })
-      : this.articleService.create(formValue).subscribe({
-          next: () => {
-            this.isSubmitting = false;
-            this.articleForm.reset();
-          },
-          error: (err) => {
-            console.error(err);
-            this.isSubmitting = false;
-          },
-        });
+      : this.articleService
+          .create({ ...formValue, writer: this.writer })
+          .subscribe({
+            next: () => {
+              this.isSubmitting = false;
+              this.articleForm.reset();
+            },
+            error: (err) => {
+              console.error(err);
+              this.isSubmitting = false;
+            },
+          });
     this.router.navigate(['/']);
   }
 }
