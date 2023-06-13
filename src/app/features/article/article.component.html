@@ -2,9 +2,11 @@
   <h2>{{ article.title }}</h2>
   <div>{{ article.writer.username }}</div>
   <div>{{ article.createdAt | date }}</div>
-  <a *ngIf="article.writer.id === userId" [routerLink]="['/edit', article.id]">
-    <button>수정</button>
-  </a>
-  <button (click)="deleteArticle()">삭제</button>
+  <div *ngIf="article.writer.id === userId">
+    <a [routerLink]="['/edit', article.id]">
+      <button>수정</button>
+    </a>
+    <button (click)="deleteArticle()">삭제</button>
+  </div>
   <p>{{ article.body }}</p>
 </section>
