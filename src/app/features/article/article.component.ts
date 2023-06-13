@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, pipe } from 'rxjs';
 import { Article } from 'src/app/core/models/article.model';
 import { ArticleService } from 'src/app/core/services/article.service';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-article',
@@ -12,11 +13,13 @@ import { ArticleService } from 'src/app/core/services/article.service';
 export class ArticleComponent implements OnInit {
   article!: Article;
   isDeleting = false;
+  userId!: string;
 
   constructor(
-    private route: ActivatedRoute,
-    private articleService: ArticleService,
-    private readonly router: Router
+    private readonly route: ActivatedRoute,
+    private readonly router: Router,
+    private readonly articleService: ArticleService,
+    private readonly userService: UserService
   ) {}
 
   ngOnInit() {
@@ -33,6 +36,10 @@ export class ArticleComponent implements OnInit {
         },
       });
     }
+
+    this.userService.currentUser.subscribe((user) => {
+      this.userId = user?.id || '';
+    });
   }
 
   deleteArticle() {

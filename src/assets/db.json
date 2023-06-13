@@ -1,0 +1,40 @@
+{
+  "articles": [
+    {
+      "id": "1",
+      "title": "this is a title",
+      "body": "body here!",
+      "createdAt": "2019-12-02T14:28:07.000Z"
+    },
+    {
+      "title": "this is a title",
+      "body": "body here!~!",
+      "createdAt": "2019-12-02T14:28:07.000Z",
+      "id": "2"
+    },
+    {
+      "title": "this is a title",
+      "body": "body here!!!123",
+      "createdAt": "2019-12-02T14:28:07.000Z",
+      "id": "3"
+    },
+    {
+      "title": "12345",
+      "body": "123",
+      "createdAt": "2023-06-12T00:56:16.792Z",
+      "id": "ddhb0PG"
+    }
+  ],
+  "users": [
+    {
+      "email": "kion1113@gmail.com",
+      "username": "kion13",
+      "id": "ddhb0PS"
+    },
+    {
+      "username": "kion",
+      "email": "kion1113@gmail.com",
+      "id": "Z730MSV"
+    }
+  ]
+}
