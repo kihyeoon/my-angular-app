@@ -1,7 +1,8 @@
 <section *ngIf="article">
   <h2>{{ article.title }}</h2>
-  <span>{{ article.createdAt | date }}</span>
-  <a [routerLink]="['/edit', article.id]">
+  <div>{{ article.writer.username }}</div>
+  <div>{{ article.createdAt | date }}</div>
+  <a *ngIf="article.writer.id === userId" [routerLink]="['/edit', article.id]">
     <button>수정</button>
   </a>
   <button (click)="deleteArticle()">삭제</button>

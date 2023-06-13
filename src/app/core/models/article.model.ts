@@ -3,4 +3,8 @@ export interface Article {
   title: string;
   body: string;
   createdAt: string;
+  writer: {
+    id: string;
+    username: string;
+  };
 }
