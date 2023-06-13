@@ -17,6 +17,7 @@ import { TokenService } from 'src/app/core/services/token.service';
 import { UserService } from 'src/app/core/services/user.service';
 import { EMPTY } from 'rxjs';
 import { ProfileComponent } from 'src/app/features/profile/profile.component';
+import { EllipsisModule } from 'ngx-ellipsis';
 
 export function initAuth(tokenService: TokenService, userService: UserService) {
   return () => (tokenService.getToken() ? userService.getCurrentUser() : EMPTY);
@@ -39,6 +40,7 @@ export function initAuth(tokenService: TokenService, userService: UserService) {
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    EllipsisModule,
   ],
   providers: [
     {

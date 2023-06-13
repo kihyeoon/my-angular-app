@@ -1,8 +1,15 @@
-<div *ngFor="let article of articles | async">
-  <a [routerLink]="['/article', article.id]">
-    <h2>{{ article.title }}</h2>
-    <div>{{ article.writer.username }}</div>
-    <p>{{ article.body }}</p>
-    <p>{{ article.createdAt | date }}</p>
-  </a>
-</div>
+<article *ngFor="let article of articles | async">
+  <div class="article-container">
+    <div class="article-info">
+      <div>{{ article.writer.username }}</div>
+      ·
+      <p>{{ article.createdAt | date }}</p>
+    </div>
+    <a [routerLink]="['/article', article.id]" class="article-link">
+      <h2>{{ article.title }}</h2>
+      <p class="article-body" ellipsis>
+        {{ article.body }}
+      </p>
+    </a>
+  </div>
+</article>
