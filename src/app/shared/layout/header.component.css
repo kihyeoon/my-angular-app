@@ -1,0 +1,13 @@
+.link {
+  gap: 5px;
+}
+
+.edit-icon {
+  position: relative;
+  top: -1px;
+}
+
+.profile-icon {
+  position: relative;
+  top: 2px;
+}

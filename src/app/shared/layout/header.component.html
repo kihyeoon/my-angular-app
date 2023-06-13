@@ -20,11 +20,15 @@
 <!-- 로그인시 렌더링 -->
 <ul *appShowAuthed="true">
   <li>
-    <a routerLink="/edit" class="button fancy-button">글쓰기 </a>
+    <a routerLink="/edit" routerLinkActive="active" class="flex-center link">
+      <span class="material-symbols-outlined edit-icon"> edit_square </span>
+      글쓰기
+    </a>
   </li>
   <li *ngIf="currentUser$ | async as currentUser">
-    <a routerLink="/profile" routerLinkActive="active">
-      {{ currentUser.username }}
+    <a routerLink="/profile" routerLinkActive="active" class="flex-center link">
+      <span class="material-symbols-outlined profile-icon"> person </span
+      >{{ currentUser.username }}
     </a>
   </li>
 </ul>
