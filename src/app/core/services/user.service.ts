@@ -12,6 +12,7 @@ export class UserService {
   public currentUser = this.currentUserSubject
     .asObservable()
     .pipe(distinctUntilChanged());
+
   public isAuthenticated = this.currentUser.pipe(map((user) => !!user));
 
   constructor(
@@ -58,10 +59,10 @@ export class UserService {
     );
   }
 
-  update(user: Partial<User>): Observable<{ user: User }> {
+  update(user: Partial<User>): Observable<User> {
     const token = this.tokenService.getToken();
-    return this.http.put<{ user: User }>(`/user${token}`, { user }).pipe(
-      tap(({ user }) => {
+    return this.http.put<User>(`/users/${token}`, user).pipe(
+      tap((user) => {
         this.currentUserSubject.next(user);
       })
     );
@@ -69,7 +70,7 @@ export class UserService {
 
   delete(): Observable<{}> {
     const token = this.tokenService.getToken();
-    return this.http.delete(`/user${token}`).pipe(
+    return this.http.delete(`/users/${token}`).pipe(
       tap(() => {
         this.logout();
       })
