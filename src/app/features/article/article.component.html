@@ -1,8 +1,11 @@
 <section *ngIf="article">
   <h2>{{ article.title }}</h2>
-  <div>{{ article.writer.username }}</div>
-  <div>{{ article.createdAt | date }}</div>
-  <div *ngIf="article.writer.id === userId">
+  <div class="article-info">
+    <div>{{ article.writer.username }}</div>
+    ·
+    <div>{{ article.createdAt | date }}</div>
+  </div>
+  <div *ngIf="article.writer.id === userId" class="article-buttons">
     <a [routerLink]="['/edit', article.id]">
       <button>수정</button>
     </a>
