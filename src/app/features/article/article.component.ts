@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, pipe } from 'rxjs';
 import { Article } from 'src/app/core/models/article.model';
 import { ArticleService } from 'src/app/core/services/article.service';
 import { UserService } from 'src/app/core/services/user.service';
@@ -33,6 +32,7 @@ export class ArticleComponent implements OnInit {
         },
         error: (err) => {
           console.error(err);
+          return this.router.navigate(['/']);
         },
       });
     }
@@ -43,10 +43,12 @@ export class ArticleComponent implements OnInit {
   }
 
   deleteArticle() {
-    this.isDeleting = true;
+    if (confirm('정말 삭제하시겠습니까?')) {
+      this.isDeleting = true;
 
-    this.articleService.delete(this.article.id).subscribe(() => {
-      this.router.navigate(['/']);
-    });
+      this.articleService.delete(this.article.id).subscribe(() => {
+        this.router.navigate(['/']);
+      });
+    }
   }
 }

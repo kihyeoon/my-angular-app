@@ -43,7 +43,7 @@ export class ArticleService {
 
   update(id: string, article: Partial<Article>): Observable<Article> {
     return this.http
-      .put<Article>(`/articles/${id}`, article)
+      .patch<Article>(`/articles/${id}`, article)
       .pipe(tap(() => this.loadArticles()));
   }
 }

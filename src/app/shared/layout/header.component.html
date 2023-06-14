@@ -1,18 +1,18 @@
 <a routerLink="/">
-  <h1>게시판</h1>
+  <h1>Board</h1>
 </a>
 
 <!-- 로그아웃시 렌더링 -->
 <ul *appShowAuthed="false">
   <li>
     <a routerLink="/login" routerLinkActive="active">
-      <button class="fancy-button">로그인</button></a
+      <button>로그인</button></a
     >
   </li>
 
   <li>
     <a routerLink="/register" routerLinkActive="active">
-      <button class="fancy-button">회원가입</button>
+      <button>회원가입</button>
     </a>
   </li>
 </ul>
@@ -20,11 +20,15 @@
 <!-- 로그인시 렌더링 -->
 <ul *appShowAuthed="true">
   <li>
-    <a routerLink="/edit" class="button fancy-button">글쓰기 </a>
+    <a routerLink="/edit" routerLinkActive="active" class="flex-center link">
+      <span class="material-symbols-outlined edit-icon"> edit_square </span>
+      글쓰기
+    </a>
   </li>
   <li *ngIf="currentUser$ | async as currentUser">
-    <a routerLink="/profile" routerLinkActive="active">
-      {{ currentUser.username }}
+    <a routerLink="/profile" routerLinkActive="active" class="flex-center link">
+      <span class="material-symbols-outlined profile-icon"> person </span
+      >{{ currentUser.username }}
     </a>
   </li>
 </ul>

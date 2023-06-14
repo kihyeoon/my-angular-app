@@ -1,4 +1,4 @@
-import { FormControl, UntypedFormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, FormBuilder } from '@angular/forms';
 import { UserService } from './../../core/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/core/models/user.model';
@@ -35,7 +35,9 @@ export class ProfileComponent implements OnInit {
   }
 
   delete(): void {
-    this.userService.delete().subscribe();
+    if (confirm('정말 탈퇴하시겠습니까?')) {
+      this.userService.delete().subscribe();
+    }
   }
 
   update(): void {
