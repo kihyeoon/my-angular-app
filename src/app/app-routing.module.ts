@@ -6,6 +6,7 @@ import { AuthComponent } from 'src/app/features/auth/auth.component';
 import { EditorComponent } from 'src/app/features/editor/editor.component';
 import { HomeComponent } from 'src/app/features/home/home.component';
 import { ProfileComponent } from 'src/app/features/profile/profile.component';
+import { PageNotFoundComponent } from 'src/app/shared/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'login', component: AuthComponent, canActivate: [AuthGuard] },
   { path: 'register', component: AuthComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

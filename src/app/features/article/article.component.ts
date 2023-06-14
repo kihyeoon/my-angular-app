@@ -32,6 +32,7 @@ export class ArticleComponent implements OnInit {
         },
         error: (err) => {
           console.error(err);
+          return this.router.navigate(['/']);
         },
       });
     }

@@ -18,6 +18,7 @@ import { UserService } from 'src/app/core/services/user.service';
 import { EMPTY } from 'rxjs';
 import { ProfileComponent } from 'src/app/features/profile/profile.component';
 import { EllipsisModule } from 'ngx-ellipsis';
+import { PageNotFoundComponent } from 'src/app/shared/page-not-found/page-not-found.component';
 
 export function initAuth(tokenService: TokenService, userService: UserService) {
   return () => (tokenService.getToken() ? userService.getCurrentUser() : EMPTY);
@@ -34,6 +35,7 @@ export function initAuth(tokenService: TokenService, userService: UserService) {
     ShowAuthedDirective,
     AuthComponent,
     ProfileComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
