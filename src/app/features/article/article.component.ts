@@ -43,10 +43,12 @@ export class ArticleComponent implements OnInit {
   }
 
   deleteArticle() {
-    this.isDeleting = true;
+    if (confirm('정말 삭제하시겠습니까?')) {
+      this.isDeleting = true;
 
-    this.articleService.delete(this.article.id).subscribe(() => {
-      this.router.navigate(['/']);
-    });
+      this.articleService.delete(this.article.id).subscribe(() => {
+        this.router.navigate(['/']);
+      });
+    }
   }
 }
