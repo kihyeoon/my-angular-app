@@ -10,16 +10,6 @@ input {
   margin-right: 10px;
 }
 
-.danger-button {
-  color: red;
-  border: 1px solid red;
-  opacity: 0.5;
-}
-
-.danger-button:hover {
-  opacity: 1;
-}
-
 label {
   font-weight: lighter;
   font-size: medium;

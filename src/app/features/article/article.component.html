@@ -9,7 +9,7 @@
     <a [routerLink]="['/edit', article.id]">
       <button>수정</button>
     </a>
-    <button (click)="deleteArticle()">삭제</button>
+    <button class="danger-button" (click)="deleteArticle()">삭제</button>
   </div>
   <p class="article-body">{{ article.body }}</p>
 </section>
