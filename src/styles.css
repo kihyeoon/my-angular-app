@@ -164,7 +164,9 @@ input {
   border-radius: 2px;
   padding: 8px;
   margin-bottom: 16px;
-  border: 1px solid #bdbdbd;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  outline: none;
 }
 
 label {

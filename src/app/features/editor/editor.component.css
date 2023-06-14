@@ -1,0 +1,18 @@
+:host {
+  margin-top: 50px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  font-size: xx-large;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  margin: 10px 0;
+  outline: none;
+  resize: none;
+}
