@@ -1,6 +1,8 @@
-<button (click)="logout()">로그아웃</button>
-<button (click)="delete()">회원탈퇴</button>
 <form [formGroup]="profileForm" (ngSubmit)="update()">
-  <input formControlName="username" type="text" />
+  <label for="username">username</label>
+  <input id="username" formControlName="username" type="text" />
   <button class="button" type="submit">회원정보수정</button>
 </form>
+
+<button (click)="logout()">로그아웃</button>
+<button (click)="delete()" class="danger-button">회원탈퇴</button>
